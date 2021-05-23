@@ -165,22 +165,45 @@ function edit(event) {
 
 // Changing Todo Item with external library x0prompt.
 
-  x0p('Enter Your New Todo', null, 'input').then(
-    function(data) {
-        if(data.button == 'info') {
-            x0p('Updated!', 
-                'Your Todo item is now ' + data.text + '!', 
-                'ok', false);
-            let x0pInput = data.text;
-            todoLi.innerText = x0pInput;    
+    bootbox.prompt({
+      size: 'small',
+      title: 'What is your name?',
+      callback: function (result) {
+        if (result === null) {
+          // Cancel was clicked
+          bootbox.alert({
+            size: 'small',
+            title: 'Cancelled',
+            message: 'You cancelled input'
+          })
+          return;
         }
-        if(data.button == 'cancel') {
-            x0p('Canceled', 
-                'You canceled input.',
-                'error', false);
-        }
-        console.log(x0p);
+
+        bootbox.alert({
+          size: 'small',
+          title: 'Updated',
+          message: 'Your Todo item is now ' + result + '!'
+        });
+        todoLi.innerText = result;
+      }
     });
+
+  // x0p('Enter Your New Todo', null, 'input').then(
+  //   function(data) {
+        // if(data.button == 'info') {
+        //     x0p('Updated!', 
+        //         'Your Todo item is now ' + data.text + '!', 
+        //         'ok', false);
+        //     let x0pInput = data.text;
+        //     todoLi.innerText = x0pInput;    
+        // }
+        // if(data.button == 'cancel') {
+        //     x0p('Canceled', 
+        //         'You canceled input.',
+        //         'error', false);
+        // }
+  //       console.log(x0p);
+  //   });
 
 
 // todoLi.innerText = x0pInput;
