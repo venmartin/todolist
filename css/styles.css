@@ -143,7 +143,7 @@ body {
 }
 
 .fall {
-  transform: translateY(8rem);
+  transform: translateY(7rem);
     /* rotateZ(320deg); */
   opacity: 0;
   transition: all 0.5s ease;
